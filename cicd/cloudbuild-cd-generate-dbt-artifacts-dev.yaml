@@ -1,0 +1,25 @@
+
+steps:
+
+  - name: us-west1-docker.pkg.dev/{PROJECT_ID}/pyspak_sample_pipeline
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pytest tests/
+
+  - name: us-west1-docker.pkg.dev/{PROJECT_ID}/pyspak_sample_pipeline
+    dir: 'dbt'
+    args:
+      - 'python'
+      - 'job.py'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  env:
+    - 'DATABRICKS_TOKEN={DATABRICKS_TOKEN}'
+    - 'DATABRICKS_HOST={DATABRICKS_HOST}'
+    - 'PROJECT_ID={PROJECT_ID}'
+    - 'LOCATION={LOCATION}'
+    - 'SCHEMA={SCHEMA}'
+    - 'CHECKPOINT={CHECKPOINT}'

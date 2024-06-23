@@ -1,0 +1,47 @@
+{
+    "name": "MAIN",
+    "email_notifications": {
+        "no_alert_for_skipped_runs": false
+    },
+    "webhook_notifications": {},
+    "timeout_seconds": 0,
+    "max_concurrent_runs": 1,
+    "tasks": [
+        {
+            "task_key": "",
+            "run_if": "ALL_SUCCESS",
+            "spark_submit_task": {
+                "parameters": [
+                    "|LOCATION|",
+                    "|SCHEMA|",
+                    "|CHECKPOINT|"
+                ],
+                "source": "GIT"
+            },
+            "timeout_seconds": 0,
+            "max_retries": 1,
+            "min_retry_interval_millis": 900000,
+            "retry_on_timeout": false,
+            "email_notifications": {},
+            "libraries": [
+            ],
+            "health": {
+                "rules": [
+                    {
+                        "metric": "RUN_DURATION_SECONDS",
+                        "op": "GREATER_THAN",
+                        "value": 1800
+                    }
+                ]
+            }
+        }
+    ],
+    "queue": {
+        "enabled": true
+    },
+    "git_source": {
+        "git_url": "https://github.com/thiagoschonrock/pyspark_sample",
+        "git_provider": "gitHub",
+        "git_branch": "main"
+    }
+}

@@ -1,0 +1,27 @@
+[
+    {
+        "job_cluster_key": "cluster_main",
+        "new_cluster": {
+            "cluster_name": "",
+            "spark_version": "14.3.x-scala2.12",
+            "gcp_attributes": {
+                "use_preemptible_executors": false,
+                "availability": "PREEMPTIBLE_WITH_FALLBACK_GCP",
+                "zone_id": "auto"
+            },
+            "node_type_id": "n2-highmem-2",
+            "driver_node_type_id": "n2-highmem-2",
+            "spark_env_vars": {
+                "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+            },
+            "enable_elastic_disk": false,
+            "enable_local_disk_encryption": false,
+            "data_security_mode": "SINGLE_USER",
+            "runtime_engine": "STANDARD",
+            "autoscale": {
+                "min_workers": 1,
+                "max_workers": 2
+            }
+        }
+    }
+]
