@@ -10,7 +10,7 @@ resource "google_cloudbuild_trigger" "build_pyspark_sample" {
   name        = "build_pyspark_sample"
 
   repository_event_config {
-    repository = google_cloudbuildv2_repository.dbt_bigquery.id
+    repository = google_cloudbuildv2_repository.pyspark_sample_repo.id
     push {
       branch = "^main$"
     }
@@ -26,7 +26,7 @@ resource "google_cloudbuild_trigger" "build_pyspark_job" {
   name        = "build_pyspark_job"
 
   repository_event_config {
-    repository = google_cloudbuildv2_repository.dbt_bigquery.id
+    repository = google_cloudbuildv2_repository.pyspark_sample_repo.id
     push {
       branch = "^main$"
     }
